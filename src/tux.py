@@ -10,6 +10,7 @@ class Tux:
         self.mundo = mundo
         self.posicion = pos_inicial
         self.energia = energia_inicial
+        self.energia_maxima = energia_inicial  # lo usa el renderizador para la barra
         self.inventario: Dict[str, int] = {"Nieve": 0}
 
     def mover(self, direccion: str) -> bool:

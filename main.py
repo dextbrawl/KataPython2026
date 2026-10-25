@@ -53,18 +53,18 @@ def algoritmo_recolector(tux: Tux, mundo: Mundo):
         if accion == "recolectar":
             cantidad = tux.recolectar()
             if cantidad > 0:
-                print(f"✨ ¡Tux recolectó {cantidad} de nieve!")
+                print(f"¡Tux recolectó {cantidad} de nieve!")
         else:
             exito = tux.mover(accion)
             if not exito:
-                print(f"⚠️ ¡No se pudo mover hacia '{accion}'!")
+                print(f"¡No se pudo mover hacia '{accion}'!")
 
     # Render final
     RenderizadorMundo.dibujar(mundo, tux)
 
 
 if __name__ == "__main__":
-    print("🐧 ¡Iniciando la Kata de Tux en la Antártida!")
+    print("¡Iniciando la Kata de Tux en la Antártida!")
     mundo, tux = cargar_mapa_antartida()
     algoritmo_recolector(tux, mundo)
-    print(f"🎉 ¡Juego terminado! Nieve total en inventario: {tux.inventario['Nieve']}")
+    print(f"¡Juego terminado! Nieve total en inventario: {tux.inventario['Nieve']}")
