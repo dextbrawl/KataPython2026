@@ -15,50 +15,22 @@ class Tux:
 
     def mover(self, direccion: str) -> bool:
         """
-        Mueve a Tux en una dirección ('arriba', 'abajo', 'izquierda', 'derecha').
-        Gasta 1 de energía si el movimiento es exitoso.
-        Retorna True si se movió, False si había un obstáculo o falta de energía.
+        TODO Fase 3: Mueve a Tux en una dirección ('arriba', 'abajo', 'izquierda', 'derecha').
+        Requerimientos: 
+            - Verificar que la energía sea mayor a 0. De lo contrario, devolver false
+            - Recomendable mapear la dirección a un incremento (por ejemplo, 'arriba' -> dx=0, dy=-1)
+            - Calcular nueva posición y verificar que es válida en el mundo o si hay un obstáculo
+            - Si es válido, actualiza la posición, resta 1 de energía y devuelve true
         """
-        if self.energia <= 0:
-            return False
-
-        desplazamientos = {
-            "arriba": (0, -1),
-            "abajo": (0, 1),
-            "izquierda": (-1, 0),
-            "derecha": (1, 0)
-        }
-
-        if direccion not in desplazamientos:
-            raise ValueError(f"Dirección no válida: {direccion}")
-
-        dx, dy = desplazamientos[direccion]
-        nueva_pos = self.posicion.mover(dx, dy)
-
-        # Validación de límites
-        if not self.mundo.es_posicion_valida(nueva_pos):
-            return False
-
-        # Validación de obstáculos (HieloGrueso)
-        item_en_destino = self.mundo.obtener_item(nueva_pos)
-        if isinstance(item_en_destino, HieloGrueso):
-            return False
-
-        # Aplicar movimiento
-        self.posicion = nueva_pos
-        self.energia -= 1
-        return True
+        pass
 
     def recolectar(self) -> int:
         """
-        Recolecta el ítem de la celda actual si es recolectable.
-        Devuelve la cantidad de ítems recolectados.
+        TODO Fase 3: Recolecta el ítem de la celda actual si es Nieve.
+        Requerimientos:
+            - Obtén el item de la posición actual
+            - Si el item es Nieve, suma la cantidad al inventario
+            - Retira el item del mundo utilizando el método de la fase 2
+            - Devuelve la cantidad recolectada
         """
-        item = self.mundo.obtener_item(self.posicion)
-        if isinstance(item, Nieve):
-            cantidad = item.cantidad
-            self.inventario["Nieve"] += cantidad
-            self.mundo.retirar_item(self.posicion)
-            return cantidad
-        
-        return 0
+        pass

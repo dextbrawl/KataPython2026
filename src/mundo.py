@@ -11,23 +11,30 @@ class Mundo:
         ]
 
     def es_posicion_valida(self, pos: Posicion) -> bool:
-        """Comprueba si la posición está dentro de los límites de la matriz."""
-        return 0 <= pos.x < self.columnas and 0 <= pos.y < self.filas
+        """
+        TODO Fase 2: Comprueba si la posición está dentro de los límites de la matriz.
+        Retorna True si pos.x está entre 0 y columnas-1, y pos.y está entre 0 y filas-1.
+        """
+        pass
 
     def obtener_item(self, pos: Posicion) -> Optional[Item]:
-        """Obtiene el item de una posición dada."""
-        if not self.es_posicion_valida(pos):
-            raise IndexError("Posición fuera de los límites del mundo.")
-        return self._grid[pos.y][pos.x]
+        """
+        TODO Fase 2: Devuelve el item alojado en la matriz en la posición indicada.
+        Asegúrate de validar la posición primero usando self.es_posicion_valida. 
+        Si no es válida, lanza: raise IndexError("Posición fuera de los límites del mundo.")
+        """
+        pass
 
     def colocar_item(self, pos: Posicion, item: Optional[Item]) -> None:
-        """Coloca un item en una posición determinada."""
-        if not self.es_posicion_valida(pos):
-            raise IndexError("Posición fuera de los límites del mundo.")
-        self._grid[pos.y][pos.x] = item
+        """
+        TODO Fase 2: Coloca el item en la matriz en la posición indicada.
+        Recuerda validar los límites lanzando IndexError si la posición no existe.
+        """
+        pass
 
     def retirar_item(self, pos: Posicion) -> Optional[Item]:
-        """Retira y devuelve el item en la posición dada."""
-        item = self.obtener_item(pos)
-        self.colocar_item(pos, None)
-        return item
+        """
+        TODO Fase 2: Retira el item de la posición (lo sustituye por None en la matriz) 
+        y devuelve el item que había originalmente en esa celda.
+        """
+        pass

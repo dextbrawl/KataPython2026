@@ -48,23 +48,32 @@ def algoritmo_recolector(tux: Tux, mundo: Mundo):
     for accion in movimientos:
         # Renderizado visual paso a paso
         RenderizadorMundo.dibujar(mundo, tux)
-        time.sleep(0.4)
+        time.sleep(1)
 
         if accion == "recolectar":
-            cantidad = tux.recolectar()
-            if cantidad > 0:
-                print(f"¡Tux recolectó {cantidad} de nieve!")
+            # Usamos un bloque try-except o comprobamos si el método está implementado
+            # por si el alumno prueba main.py antes de llegar a la fase 3
+            try:
+                cantidad = tux.recolectar()
+                if cantidad and cantidad > 0:
+                    print(f"✨ ¡Tux recolectó {cantidad} de nieve!")
+            except TypeError:
+                pass # Si devuelve None porque no está implementado
         else:
             exito = tux.mover(accion)
             if not exito:
-                print(f"¡No se pudo mover hacia '{accion}'!")
+                print(f"⚠️ ¡No se pudo mover hacia '{accion}'!")
 
     # Render final
     RenderizadorMundo.dibujar(mundo, tux)
 
 
 if __name__ == "__main__":
-    print("¡Iniciando la Kata de Tux en la Antártida!")
+    print("🐧 ¡Iniciando la Kata de Tux en la Antártida!")
     mundo, tux = cargar_mapa_antartida()
     algoritmo_recolector(tux, mundo)
-    print(f"¡Juego terminado! Nieve total en inventario: {tux.inventario['Nieve']}")
+    
+    # Manejo de seguridad en caso de que inventario no esté inicializado todavía en Tux
+    inv = getattr(tux, 'inventario', {})
+    nieve = inv.get('Nieve', 0) if isinstance(inv, dict) else 0
+    print(f"🎉 ¡Juego terminado! Nieve total en inventario: {nieve}")
